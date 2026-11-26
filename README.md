@@ -123,11 +123,10 @@ Smart-Invoice-Analyzer/
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/usamaellahi2022-code/Smart-Invoice-Analyzer.git
 cd Smart-Invoice-Analyzer
 ```
 
-https://github.com/usamaellahi2022-code/Smart-Invoice-Analyzer
 
 ### 2. Create a Python environment
 
