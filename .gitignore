@@ -1,0 +1,28 @@
+.conda/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.env.*
+!.env.example
+*.log
+logs/
+data/incoming/
+data/processed/
+outputs/
+.DS_Store
+Thumbs.db
+*.bak
+*.bom-backup
+
+# Local backups and temporary publication screenshots
+reports/backups/
+reports/screenshots/Screenshot*.png
+
+# Unused local OCR error-test fixtures
+data/test_images/sample_corrupt_invoice.pdf
+data/test_images/sample_empty_invoice.pdf
