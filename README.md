@@ -21,33 +21,30 @@ The application uses a FastAPI backend and a Streamlit frontend to provide a loc
 - View processing history during the current Streamlit session.
 - Access backend health checks and interactive API documentation.
 
+
 ## Application Screenshots
 
 The following screenshots demonstrate the application's interface and main features.
 
 ### 1. Dashboard
-
-![Dashboard](reports/screenshots/01_dashboard.png)
+![Dashboard](./reports/screenshots/01_dashboard.png)
 
 ### 2. Invoice Upload
-
-![Invoice Upload](reports/screenshots/02_invoice_upload.png)
+![Invoice Upload](./reports/screenshots/02_invoice_upload.png)
 
 ### 3. Extraction Results
-
-![Extraction Results](reports/screenshots/03_extraction_results.png)
+![Extraction Results](./reports/screenshots/03_extraction_results.png)
 
 ### 4. Validation
-
-![Validation](reports/screenshots/04_validation.png)
+![Validation](./reports/screenshots/04_validation.png)
 
 ### 5. Processing History
-
-![Processing History](reports/screenshots/05_processing_history.png)
+![Processing History](./reports/screenshots/05_processing_history.png)
 
 ### 6. API Documentation
+![API Documentation](./reports/screenshots/06_api_documentation.png)
 
-![API Documentation](reports/screenshots/06_api_documentation.png)
+
 
 ## Technology Stack
 
