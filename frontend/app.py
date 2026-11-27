@@ -5,9 +5,14 @@ import pandas as pd
 import requests
 import streamlit as st
 
+from frontend.database import (
+    clear_invoice_history,
+    get_invoice_history,
+    get_invoice_count,
+    save_invoice_result,
+)
 from frontend.utils import (
     extract_field_rows,
-    flatten_invoice,
     history_to_csv,
     history_to_excel,
 )
@@ -31,9 +36,6 @@ st.caption(
     "review confidence scores, and validate its data."
 )
 
-if "invoice_history" not in st.session_state:
-    st.session_state.invoice_history = []
-
 if "current_result" not in st.session_state:
     st.session_state.current_result = None
 
@@ -52,10 +54,10 @@ with st.sidebar:
 
     st.divider()
     st.subheader("Processing history")
-    st.metric("Invoices processed", len(st.session_state.invoice_history))
+    st.metric("Invoices processed", get_invoice_count())
 
-    if st.button("Clear session history", use_container_width=True):
-        st.session_state.invoice_history = []
+    if st.button("Clear saved history", use_container_width=True):
+        clear_invoice_history()
         st.session_state.current_result = None
         st.rerun()
 
@@ -107,10 +109,17 @@ if analyze_clicked and uploaded_file is not None:
                 )
 
                 st.session_state.current_result = response_payload
-                record = flatten_invoice(response_payload, timestamp)
-                st.session_state.invoice_history.insert(0, record)
 
-                st.success("Invoice processed successfully.")
+                try:
+                    save_invoice_result(response_payload, timestamp)
+                    st.success("Invoice processed and saved to database.")
+                except Exception:
+                    st.error(
+                        "Invoice analysis succeeded, but its history "
+                        "could not be saved. Check database permissions "
+                        "and the configured database path."
+                    )
+
                 st.rerun()
 
             else:
@@ -202,7 +211,7 @@ if result:
 st.divider()
 st.header("Processing history")
 
-history = st.session_state.invoice_history
+history = get_invoice_history()
 
 if history:
     history_dataframe = pd.DataFrame(history)

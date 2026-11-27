@@ -226,3 +226,17 @@ These are recorded local development test results, not an independent security a
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
+## Persistent invoice history
+
+Version 2.0 adds local SQLite storage for processed invoice history.
+
+- Invoice history is saved in a project-local SQLite database.
+- History remains available after restarting the Streamlit application.
+- The original API response and flattened invoice record are stored.
+- CSV and Excel history exports remain available.
+- The default database path is `data/invoice_history.sqlite3`.
+- Set `SMART_INVOICE_DB_PATH` to override the database location.
+- The local database and SQLite journal files are excluded from Git.
+
+The database is initialized automatically when the frontend accesses invoice history.
